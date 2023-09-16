@@ -6,7 +6,7 @@ import { Button } from "./components/ui/button";
 export const App = () => (
   <main className="flex min-h-screen">
     {/* Left Menu */}
-    <div className="w-1/4">
+    <div className="w-fit">
       <Toolbar />
     </div>
     {/* Main Content */}
