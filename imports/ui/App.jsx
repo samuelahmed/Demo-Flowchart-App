@@ -3,8 +3,8 @@ import { Toolbar } from "./layouts/Toolbar";
 import { Flowchart } from "./layouts/Flowchart";
 
 export const App = () => (
-  <main className="flex min-h-screen">
-    
+  <main className="flex min-h-screen pb-8">
+
     {/* Left Menu */}
     <div className="w-fit">
       <Toolbar />
