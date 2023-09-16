@@ -1,5 +1,4 @@
 import React from "react";
-
 import { NavigationBar } from "./NavigationBar";
 import { FlowchartControls } from "./FlowchartControls";
 

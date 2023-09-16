@@ -4,7 +4,7 @@ import { Flowchart } from "./layouts/Flowchart";
 
 export const App = () => (
   <main className="flex min-h-screen">
-
+    
     {/* Left Menu */}
     <div className="w-fit">
       <Toolbar />
@@ -14,6 +14,6 @@ export const App = () => (
     <div className="w-3/4">
       <Flowchart />
     </div>
-    
+
   </main>
 );
