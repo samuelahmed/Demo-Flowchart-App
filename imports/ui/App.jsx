@@ -1,13 +1,17 @@
-import React from 'react';
-import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
+import React from "react";
+import { Toolbar } from "./layouts/Toolbar";
+import { Flowchart } from "./layouts/Flowchart";
+import { Button } from "./components/ui/button";
 
 export const App = () => (
-  <div>
-    <h1 className="text-3xl text-indigo-800">
-      Welcome to Meteor + Tailwind!
-    </h1>
-    <Hello/>
-    <Info/>
-  </div>
-)
+  <main className="flex min-h-screen">
+    {/* Left Menu */}
+    <div className="w-1/4">
+      <Toolbar />
+    </div>
+    {/* Main Content */}
+    <div className="w-3/4">
+      <Flowchart />
+    </div>
+  </main>
+);
