@@ -4,6 +4,11 @@ import { Switch } from "../components/ui/switch";
 import { Separator } from "../components/ui/seperator";
 
 export const FlowchartControls = () => {
+  const onDragStart = (event, nodeType) => {
+    event.dataTransfer.setData("application/reactflow", nodeType);
+    event.dataTransfer.effectAllowed = "move";
+  };
+
   return (
     <>
       <h2 className="text-muted-foreground text-center">Workflows</h2>
@@ -15,6 +20,8 @@ export const FlowchartControls = () => {
           variant="outline"
           size="sm"
           className="outline outline-blue-500 w-20"
+          onDragStart={(event) => onDragStart(event, "input")}
+          draggable
         >
           Execution
         </Button>

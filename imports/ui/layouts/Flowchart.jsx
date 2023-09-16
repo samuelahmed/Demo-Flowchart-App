@@ -1,59 +1,92 @@
-import React from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { Card } from "../components/ui/card";
 import ReactFlow, {
   Background,
   Controls,
-  applyEdgeChanges,
-  applyNodeChanges,
+  useNodesState,
+  useEdgesState,
+  ReactFlowProvider,
 } from "reactflow";
-// import ReactFlow, { applyEdgeChanges, applyNodeChanges } from 'reactflow';
-
-import { useState, useCallback } from "react";
-
 import "reactflow/dist/style.css";
-
-const initialEdges = [
-  { id: "1-2", source: "1", target: "2", label: "to the", type: "step" },
-];
 
 const initialNodes = [
   {
     id: "1",
-    data: { label: "Hello" },
-    position: { x: 0, y: 0 },
     type: "input",
-  },
-  {
-    id: "2",
-    data: { label: "World" },
-    position: { x: 100, y: 100 },
+    data: { label: "input node" },
+    position: { x: 250, y: 5 },
   },
 ];
 
-export const Flowchart = () => {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+let id = 0;
+const getId = () => `dndnode_${id++}`;
 
-  const onNodesChange = useCallback(
-    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+export const Flowchart = () => {
+  const reactFlowWrapper = useRef(null);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
     []
   );
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
+
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
+
+  const onDrop = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+      const type = event.dataTransfer.getData("application/reactflow");
+
+      // check if the dropped element is valid
+      if (typeof type === "undefined" || !type) {
+        return;
+      }
+
+      const position = reactFlowInstance.project({
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
+      });
+      const newNode = {
+        id: getId(),
+        type,
+        position,
+        data: { label: `${type} node` },
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [reactFlowInstance]
   );
 
   return (
-    <Card className="h-full my-4 mr-4">
-      <ReactFlow
-        nodes={nodes}
-        onNodesChange={onNodesChange}
-        edges={edges}
-        onEdgesChange={onEdgesChange}
-      >
-        <Background />
-        <Controls />
-      </ReactFlow>
-    </Card>
+    <div className="h-full">
+      <ReactFlowProvider>
+        <div className="h-full" ref={reactFlowWrapper}>
+          <Card className="h-full my-4 mr-4">
+            <ReactFlow
+              nodes={nodes}
+              onNodesChange={onNodesChange}
+              edges={edges}
+              onEdgesChange={onEdgesChange}
+              onConnect={onConnect}
+              onInit={setReactFlowInstance}
+              onDrop={onDrop}
+              onDragOver={onDragOver}
+              fitView
+            >
+              <Background />
+              <Controls />
+            </ReactFlow>
+          </Card>
+        </div>
+      </ReactFlowProvider>
+    </div>
   );
 };
