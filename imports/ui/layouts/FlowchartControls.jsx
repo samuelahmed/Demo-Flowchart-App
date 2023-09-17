@@ -20,7 +20,7 @@ export const FlowchartControls = () => {
           variant="outline"
           size="sm"
           className="outline outline-blue-500 w-20"
-          onDragStart={(event) => onDragStart(event, "input")}
+          onDragStart={(event) => onDragStart(event, "Execution")}
           draggable
         >
           Execution
@@ -29,6 +29,8 @@ export const FlowchartControls = () => {
           variant="outline"
           size="sm"
           className="outline outline-green-500 w-20"
+          onDragStart={(event) => onDragStart(event, "Condition")}
+          draggable
         >
           Condition
         </Button>
@@ -38,6 +40,8 @@ export const FlowchartControls = () => {
           variant="outline"
           size="sm"
           className="outline outline-yellow-500 w-20"
+          onDragStart={(event) => onDragStart(event, "Assignment")}
+          draggable
         >
           Assignment
         </Button>
@@ -45,6 +49,8 @@ export const FlowchartControls = () => {
           variant="outline"
           size="sm"
           className="outline outline-red-500 w-20"
+          onDragStart={(event) => onDragStart(event, "Assertion")}
+          draggable
         >
           Assertion
         </Button>

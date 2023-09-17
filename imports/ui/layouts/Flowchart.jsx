@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
+import { useMemo } from "react";
 import { Card } from "../components/ui/card";
 import ReactFlow, {
   Background,
@@ -6,17 +7,13 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   ReactFlowProvider,
+  applyNodeChanges,
+  addEdge,
+  applyEdgeChanges,
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-const initialNodes = [
-  {
-    id: "1",
-    type: "input",
-    data: { label: "input node" },
-    position: { x: 250, y: 5 },
-  },
-];
+const initialNodes = [];
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
