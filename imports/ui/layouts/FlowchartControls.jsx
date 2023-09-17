@@ -24,12 +24,7 @@ export const FlowchartControls = () => {
       <div className="flex flex-col md:flex-row justify-left md:space-x-2 space-y-2 md:space-y-0">
         <TooltipProvider>
           <Tooltip>
-            {/* Warning: validateDOMNesting(...): <button> cannot appear as a descendant of <button>. 
-                TooltipTrigger is a button, and so is Button therefore the error is occuring.
-                However it gives a nice side-effect of making the button icon feel dragable to the flowchart.
-             */}
-            <TooltipTrigger>
-              <Button
+            <TooltipTrigger
                 variant="outline"
                 size="sm"
                 className="outline outline-blue-400 w-28"
@@ -37,7 +32,6 @@ export const FlowchartControls = () => {
                 draggable
               >
                 Execution
-              </Button>
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Execution Unit</p>
@@ -46,8 +40,7 @@ export const FlowchartControls = () => {
         </TooltipProvider>
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger>
-              <Button
+            <TooltipTrigger
                 variant="outline"
                 size="sm"
                 className="outline outline-green-400 w-28"
@@ -55,7 +48,6 @@ export const FlowchartControls = () => {
                 draggable
               >
                 Condition
-              </Button>
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Condition Unit</p>
@@ -66,8 +58,7 @@ export const FlowchartControls = () => {
       <div className="flex flex-col md:flex-row justify-left md:space-x-2 space-y-2 md:space-y-0">
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger>
-              <Button
+            <TooltipTrigger
                 variant="outline"
                 size="sm"
                 className="outline outline-yellow-400 w-28"
@@ -75,18 +66,15 @@ export const FlowchartControls = () => {
                 draggable
               >
                 Assignment
-              </Button>
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Assignment Unit</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger>
-              <Button
+            <TooltipTrigger
                 variant="outline"
                 size="sm"
                 className="outline outline-red-400 w-28"
@@ -94,7 +82,6 @@ export const FlowchartControls = () => {
                 draggable
               >
                 Assertion
-              </Button>
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Assertion Unit</p>
