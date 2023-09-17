@@ -18,20 +18,22 @@ export const FlowchartControls = () => {
   return (
     <>
       <h2 className="text-muted-foreground text-center">Workflows</h2>
-
       <Separator />
       {/* Create Unit */}
       <p className="text-sm text-muted-foreground">Create Unit</p>
-
       <div className="flex flex-col md:flex-row justify-left md:space-x-2 space-y-2 md:space-y-0">
         <TooltipProvider>
           <Tooltip>
+            {/* Warning: validateDOMNesting(...): <button> cannot appear as a descendant of <button>. 
+                TooltipTrigger is a button, and so is Button therefore the error is occuring.
+                However it gives a nice side-effect of making the button icon feel dragable to the flowchart.
+             */}
             <TooltipTrigger>
               <Button
                 variant="outline"
                 size="sm"
-                className="outline outline-blue-500 w-20"
-                onDragStart={(event) => onDragStart(event, "Execution")}
+                className="outline outline-blue-400 w-28"
+                onDragStart={(event) => onDragStart(event, "executionNode")}
                 draggable
               >
                 Execution
@@ -42,15 +44,14 @@ export const FlowchartControls = () => {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
               <Button
                 variant="outline"
                 size="sm"
-                className="outline outline-green-500 w-20"
-                onDragStart={(event) => onDragStart(event, "Condition")}
+                className="outline outline-green-400 w-28"
+                onDragStart={(event) => onDragStart(event, "conditionNode")}
                 draggable
               >
                 Condition
@@ -69,8 +70,8 @@ export const FlowchartControls = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="outline outline-yellow-500 w-20"
-                onDragStart={(event) => onDragStart(event, "Assignment")}
+                className="outline outline-yellow-400 w-28"
+                onDragStart={(event) => onDragStart(event, "assignmentNode")}
                 draggable
               >
                 Assignment
@@ -88,8 +89,8 @@ export const FlowchartControls = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="outline outline-red-500 w-20"
-                onDragStart={(event) => onDragStart(event, "Assertion")}
+                className="outline outline-red-400 w-28"
+                onDragStart={(event) => onDragStart(event, "assertionNode")}
                 draggable
               >
                 Assertion

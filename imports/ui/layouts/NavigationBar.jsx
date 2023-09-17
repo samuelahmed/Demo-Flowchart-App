@@ -121,23 +121,14 @@ export const NavigationBar = () => {
           </MenubarMenu>
         </Menubar>
         <Menubar>
-          <MenubarMenu>
+        <MenubarMenu>
             <MenubarTrigger>Help</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem>Projects</MenubarItem>
+              <MenubarItem>Documentation</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Jobs</MenubarItem>
+              <MenubarItem>Contact Support</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Materials</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Properties</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Workflows</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Dropbox</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>External Uploads</MenubarItem>
-              <MenubarSeparator />
+              <MenubarItem>Compute Load: Low</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
         </Menubar>

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useCallback } from "react";
-import { useMemo } from "react";
 import { Card } from "../components/ui/card";
 import ReactFlow, {
   Background,
@@ -7,21 +6,30 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   ReactFlowProvider,
-  applyNodeChanges,
   addEdge,
-  applyEdgeChanges,
 } from "reactflow";
 import "reactflow/dist/style.css";
+import AssertionNode from "../components/customNodes/AssertionNode";
+import AssignmentNode from "../components/customNodes/AssignmentNode";
+import ConditionNode from "../components/customNodes/ConditionNode";
+import ExecutionNode from "../components/customNodes/ExecutionNode";
 
-const initialNodes = [];
+const nodeTypes = {
+  assertionNode: AssertionNode,
+  assignmentNode: AssignmentNode,
+  conditionNode: ConditionNode,
+  executionNode: ExecutionNode,
+};
 
+const initNodes = [];
+const initEdges = [];
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
 export const Flowchart = () => {
   const reactFlowWrapper = useRef(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
   const onConnect = useCallback(
@@ -41,7 +49,6 @@ export const Flowchart = () => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
 
-      // check if the dropped element is valid
       if (typeof type === "undefined" || !type) {
         return;
       }
@@ -77,6 +84,7 @@ export const Flowchart = () => {
               onDrop={onDrop}
               onDragOver={onDragOver}
               fitView
+              nodeTypes={nodeTypes}
             >
               <Background />
               <Controls />
