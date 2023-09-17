@@ -25,13 +25,13 @@ export const FlowchartControls = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger
-                variant="outline"
-                size="sm"
-                className="outline outline-blue-400 w-28"
-                onDragStart={(event) => onDragStart(event, "executionNode")}
-                draggable
-              >
-                Execution
+              variant="outline"
+              size="sm"
+              className="border border-blue-400 w-28 cursor-grab"
+              onDragStart={(event) => onDragStart(event, "executionNode")}
+              draggable
+            >
+              <div className="outline-2 outline-blue-400">Execution</div>
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Execution Unit</p>
@@ -41,13 +41,13 @@ export const FlowchartControls = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger
-                variant="outline"
-                size="sm"
-                className="outline outline-green-400 w-28"
-                onDragStart={(event) => onDragStart(event, "conditionNode")}
-                draggable
-              >
-                Condition
+              variant="outline"
+              size="sm"
+              className="border border-green-400 w-28 cursor-grab"
+              onDragStart={(event) => onDragStart(event, "conditionNode")}
+              draggable
+            >
+              Condition
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Condition Unit</p>
@@ -59,13 +59,13 @@ export const FlowchartControls = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger
-                variant="outline"
-                size="sm"
-                className="outline outline-yellow-400 w-28"
-                onDragStart={(event) => onDragStart(event, "assignmentNode")}
-                draggable
-              >
-                Assignment
+              variant="outline"
+              size="sm"
+              className="border border-yellow-400 w-28 cursor-grab"
+              onDragStart={(event) => onDragStart(event, "assignmentNode")}
+              draggable
+            >
+              Assignment
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Assignment Unit</p>
@@ -75,13 +75,13 @@ export const FlowchartControls = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger
-                variant="outline"
-                size="sm"
-                className="outline outline-red-400 w-28"
-                onDragStart={(event) => onDragStart(event, "assertionNode")}
-                draggable
-              >
-                Assertion
+              variant="outline"
+              size="sm"
+              className="border border-red-400 w-28 cursor-grab"
+              onDragStart={(event) => onDragStart(event, "assertionNode")}
+              draggable
+            >
+              Assertion
             </TooltipTrigger>
             <TooltipContent>
               <p>Drag into dotted area to create Assertion Unit</p>
