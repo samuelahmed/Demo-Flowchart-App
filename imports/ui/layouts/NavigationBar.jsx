@@ -100,7 +100,6 @@ export const NavigationBar = () => {
               <MenubarItem>Dropbox</MenubarItem>
               <MenubarSeparator />
               <MenubarItem>External Uploads</MenubarItem>
-              <MenubarSeparator />
             </MenubarContent>
           </MenubarMenu>
         </Menubar>

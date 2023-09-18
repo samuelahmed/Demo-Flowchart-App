@@ -1,6 +1,4 @@
 import React from "react";
-import { Button } from "../components/ui/button";
-import { Switch } from "../components/ui/switch";
 import { Separator } from "../components/ui/seperator";
 import {
   Tooltip,
@@ -27,7 +25,7 @@ export const FlowchartControls = () => {
             <TooltipTrigger
               variant="outline"
               size="sm"
-              className="border border-blue-400 w-28 cursor-grab"
+              className="border border-gray-200 border-l-blue-400 w-28 cursor-grab"
               onDragStart={(event) => onDragStart(event, "executionNode")}
               draggable
             >
@@ -43,7 +41,7 @@ export const FlowchartControls = () => {
             <TooltipTrigger
               variant="outline"
               size="sm"
-              className="border border-green-400 w-28 cursor-grab"
+              className="border border-gray-200 border-l-green-400 w-28 cursor-grab"
               onDragStart={(event) => onDragStart(event, "conditionNode")}
               draggable
             >
@@ -61,7 +59,7 @@ export const FlowchartControls = () => {
             <TooltipTrigger
               variant="outline"
               size="sm"
-              className="border border-yellow-400 w-28 cursor-grab"
+              className="border border-gray-200 border-l-yellow-400 w-28 cursor-grab"
               onDragStart={(event) => onDragStart(event, "assignmentNode")}
               draggable
             >
@@ -77,7 +75,7 @@ export const FlowchartControls = () => {
             <TooltipTrigger
               variant="outline"
               size="sm"
-              className="border border-red-400 w-28 cursor-grab"
+              className="border border-gray-200 border-l-red-400 w-28 cursor-grab"
               onDragStart={(event) => onDragStart(event, "assertionNode")}
               draggable
             >
@@ -88,15 +86,6 @@ export const FlowchartControls = () => {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-      </div>
-      <Separator />
-      <div className="md:flex justify-start space-x-2">
-        {/* Collapse Units */}
-        <p className="text-sm text-muted-foreground">Collpase Units </p>
-        <Switch />
-        {/* Auto Fit */}
-        <p className="text-sm text-muted-foreground">Auto Fit</p>
-        <Switch />
       </div>
       <Separator />
     </>

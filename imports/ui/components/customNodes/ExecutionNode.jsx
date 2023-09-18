@@ -3,7 +3,7 @@ import { Handle, Position } from "reactflow";
 
 function ExecutionNode() {
   return (
-    <div className="px-4 py-2 shadow-md bg-white border-2 border-blue-400 w-40">
+    <div className="px-4 py-2 shadow-md bg-white border-2 border-gray-200 border-l-blue-400 w-40">
       Execution Unit
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />
